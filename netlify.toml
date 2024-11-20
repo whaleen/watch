@@ -1,4 +1,3 @@
-# netlify.toml
 [build]
 command = "npm run build"
 publish = ".next"
@@ -8,13 +7,7 @@ functions = "netlify/functions"
 command = "npm run dev"
 targetPort = 3000
 port = 8888
-publish = ".next"
 framework = "#custom"
-
-[[redirects]]
-from = "/.netlify/functions/*"
-to = "/.netlify/functions/:splat"
-status = 200
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
