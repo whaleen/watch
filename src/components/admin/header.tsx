@@ -1,6 +1,6 @@
 // src/components/admin/header.tsx
 import Link from "next/link";
-import { Home, Bell, Settings } from "lucide-react";
+import { Home, Bell } from "lucide-react";
 import { Button } from "../../components/ui/button";
 
 export function Header() {
