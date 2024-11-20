@@ -1,0 +1,44 @@
+.
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── src
+│   ├── app
+│   │   ├── admin
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── alerts
+│   │   │   └── page.tsx
+│   │   ├── favicon.ico
+│   │   ├── fonts
+│   │   │   ├── GeistMonoVF.woff
+│   │   │   └── GeistVF.woff
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components
+│   │   ├── admin
+│   │   │   ├── config-panel.tsx
+│   │   │   └── header.tsx
+│   │   └── ui
+│   │       ├── alert.tsx
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       └── select.tsx
+│   └── lib
+│       └── utils.ts
+├── tailwind.config.ts
+├── tree.txt
+└── tsconfig.json
+
+11 directories, 31 files
