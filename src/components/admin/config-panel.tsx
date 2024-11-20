@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Settings, Server, Key, Check, X, Loader2, Wallet } from "lucide-react";
+import { Server, Key, Check, X, Loader2, Wallet } from "lucide-react";
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
@@ -66,14 +66,27 @@ export function ConfigPanel() {
 
           // Try to get existing user
           const userResponse = await fetch(`/.netlify/functions/user?walletAddress=${walletAddress}`);
+
+          if (!userResponse.ok) {
+            throw new Error(`Failed to fetch user: ${userResponse.statusText}`);
+          }
+
           let userData = await userResponse.json();
 
           // If user doesn't exist, create new user
           if (!userData || !userData.id) {
             const createResponse = await fetch('/.netlify/functions/user', {
               method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
               body: JSON.stringify({ walletAddress })
             });
+
+            if (!createResponse.ok) {
+              throw new Error(`Failed to create user: ${createResponse.statusText}`);
+            }
+
             userData = await createResponse.json();
           }
 
@@ -81,6 +94,11 @@ export function ConfigPanel() {
 
           // Load existing config if available
           const configResponse = await fetch(`/.netlify/functions/config?userId=${userData.id}`);
+
+          if (!configResponse.ok) {
+            throw new Error(`Failed to fetch config: ${configResponse.statusText}`);
+          }
+
           const existingConfig = await configResponse.json();
 
           if (existingConfig && !existingConfig.error) {
